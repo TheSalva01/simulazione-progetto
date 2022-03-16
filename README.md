@@ -1,2 +1,2 @@
-# progetto
-simulazione-progetto
+# simulazione-progetto
+progetto
