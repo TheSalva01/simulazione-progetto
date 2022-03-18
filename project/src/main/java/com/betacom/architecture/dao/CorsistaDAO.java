@@ -1,6 +1,7 @@
 package com.betacom.architecture.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,7 +28,7 @@ public class CorsistaDAO implements DAOConstants{
 		}
 	}
 	
-	public void Create(Connection conn, Corsista corsista) throws DAOException {
+	public void create(Connection conn, Corsista corsista) throws DAOException {
 		try{
 			rowSet.setCommand(SELECT_CORSISTI);
 			rowSet.execute(conn);
@@ -40,6 +41,18 @@ public class CorsistaDAO implements DAOConstants{
 			rowSet.moveToCurrentRow();
 			rowSet.acceptChanges();
 		} catch(SQLException sql) {
+			throw new DAOException(sql);
+		}
+	}
+	
+	public void delete(Connection conn, Corsista corsista) throws DAOException {
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(DELETE_CORSISTA);
+			ps.setInt(1, corsista.getCodCorsista());
+			ps.execute();
+			conn.commit();
+		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
 	}
