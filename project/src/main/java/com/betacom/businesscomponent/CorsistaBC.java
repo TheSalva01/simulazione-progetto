@@ -43,4 +43,13 @@ public class CorsistaBC {
 			throw new DAOException(sql);
 		}
 	}
+	
+	public void delete(Corsista corsista) throws DAOException {
+		try {
+			CorsistaDAO.getFactory().delete(conn, corsista);
+		} catch(SQLException sql) {
+			throw new DAOException(sql);
+		}
+	}
+
 }
