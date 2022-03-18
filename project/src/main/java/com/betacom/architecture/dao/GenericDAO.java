@@ -1,6 +1,7 @@
 package com.betacom.architecture.dao;
 
 import java.sql.Connection;
+import java.util.List;
 
 public interface GenericDAO<T> {
 	
@@ -12,6 +13,6 @@ public interface GenericDAO<T> {
 
 	public T getById(Connection conn, long id) throws DAOException;
 
-	public T[] getAll(Connection conn) throws DAOException;
+	public List<T> getAll(Connection conn) throws DAOException;
 	
 }
