@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.betacom.architecture.dao.DAOException;
+import com.betacom.businesscomponent.CorsistaBC;
 import com.betacom.businesscomponent.CorsoCorsistaBC;
 import com.betacom.businesscomponent.model.Corsista;
 import com.betacom.businesscomponent.model.Corso;
@@ -20,9 +21,9 @@ public class AdminFacade {
 		return adminFacade;
 	}
 
-	public void createCorsista(Corsista corsista) {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public void createCorsista(Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
+		CorsistaBC cBC = new CorsistaBC();
+		cBC.create(corsista);
 	}
 
 	public void deleteCorso(Corso corso) {
@@ -30,14 +31,14 @@ public class AdminFacade {
 		throw new UnsupportedOperationException();
 	}
 
-	public List<Corsista> getCorsisti() {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public List<Corsista> getCorsisti() throws DAOException, ClassNotFoundException, IOException {
+		CorsistaBC cBC = new CorsistaBC();
+		return cBC.getAll();
 	}
 
-	public int getNumber() {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public int getNumber() throws DAOException, ClassNotFoundException, IOException {
+		CorsistaBC cBC = new CorsistaBC();
+		return cBC.getNumber();
 	}
 
 	public Corso getTrendCourse() throws DAOException, ClassNotFoundException, IOException {
