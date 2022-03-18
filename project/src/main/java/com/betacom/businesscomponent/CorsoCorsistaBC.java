@@ -21,8 +21,10 @@ public class CorsoCorsistaBC {
 		CorsoCorsistaDAO.getFactory().create(conn, corsoCorsista);
 	}
 	
-	public Corso getTrendCourse() {
-		//TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public Corso getTrendCourse() throws DAOException {
+		int trendingCourseId = CorsoCorsistaDAO.getFactory().getTrendCourseId(conn);
+		Corso corso = CorsoDAO.getFactory().getById(conn, trendingCourseId); 
+		
+		return corso; 
 	}
 }
