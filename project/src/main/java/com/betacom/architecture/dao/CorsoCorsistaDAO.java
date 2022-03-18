@@ -5,13 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
 
 import com.betacom.businesscomponent.model.CorsoCorsista;
 
-public class CorsoCorsistaDAO extends CorsoCorsistaDAOAdapter implements DAOConstants {
+public class CorsoCorsistaDAO implements DAOConstants {
 	private CachedRowSet rowSet;
 
 	public static CorsoCorsistaDAO getFactory() throws DAOException {
@@ -58,24 +60,21 @@ public class CorsoCorsistaDAO extends CorsoCorsistaDAOAdapter implements DAOCons
 		}
 		return corsoCorsista;
 	}
-
-	@Override
-	public CorsoCorsista[] getAll(Connection conn) throws DAOException {
-		CorsoCorsista[] corsoCorsisti = null;
+	
+	public List<CorsoCorsista> getAll(Connection conn) throws DAOException {
+		List<CorsoCorsista> corsoCorsisti = new ArrayList<>();
 
 		try {
 			Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
 			ResultSet rs = statement.executeQuery(SELECT_CORSO_CORSISTA);
-			rs.last();
-			corsoCorsisti = new CorsoCorsista[rs.getRow()];
 			rs.beforeFirst();
-			for (int i = 0; rs.next(); i++) {
+			while(rs.next()) {
 				CorsoCorsista corsoCorsista = new CorsoCorsista();
 				corsoCorsista.setCodCorso(rs.getLong(1));
 				corsoCorsista.setCodCorsista(rs.getLong(2));
 
-				corsoCorsisti[i] = corsoCorsista;
+				corsoCorsisti.add(corsoCorsista);
 			}
 		} catch (SQLException exc) {
 			throw new DAOException(exc);
