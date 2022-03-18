@@ -61,6 +61,7 @@ public class CorsoCorsistaDAO extends CorsoCorsistaDAOAdapter implements DAOCons
 		return corsoCorsista;
 	}
 
+	//
 	@Override
 	public List<CorsoCorsista> getAll(Connection conn) throws DAOException {
 		List<CorsoCorsista> corsoCorsisti = new ArrayList<>();
