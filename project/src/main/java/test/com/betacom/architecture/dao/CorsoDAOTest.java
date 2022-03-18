@@ -41,6 +41,20 @@ class CorsoDAOTest {
 	
 	@Test
 	@Order(1)
+	void testGetById() {
+		try {
+			Corso corso = CorsoDAO.getFactory().getById(conn, 4);
+			System.out.println(corso.toString());
+
+		} catch (DAOException exc) {
+			exc.printStackTrace();
+			fail(exc.getMessage());
+		}
+	}
+
+	
+	@Test
+	@Order(2)
 	void testGetAll() {
 		try {
 			List<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
@@ -53,7 +67,7 @@ class CorsoDAOTest {
 	}
 	
 	@Test
-	@Order(2)
+	@Order(3)
 	void getDocenti() {
 		try {
 			List<Docente> docenti = CorsoDAO.getFactory().getDocenti(conn);
@@ -64,6 +78,7 @@ class CorsoDAOTest {
 			fail("Recupero getDocenti fallito");
 		}
 	}
+	
 	
 	
 	@AfterAll
