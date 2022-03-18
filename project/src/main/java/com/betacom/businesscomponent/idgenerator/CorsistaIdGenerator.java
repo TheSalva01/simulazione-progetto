@@ -11,7 +11,7 @@ import com.betacom.architecture.dao.DAOException;
 import com.betacom.architecture.dbaccess.DBAccess;
 
 public class CorsistaIdGenerator implements IdGenerator, DAOConstants{
-	private CorsistaIdGenerator instance;
+	private static CorsistaIdGenerator instance;
 	private Connection conn;
 	private Statement stmt;
 	private ResultSet rs;
@@ -21,7 +21,7 @@ public class CorsistaIdGenerator implements IdGenerator, DAOConstants{
 		conn = DBAccess.getConnection();
 	}
 	
-	public CorsistaIdGenerator getInstance() throws ClassNotFoundException, IOException, DAOException {
+	public static CorsistaIdGenerator getInstance() throws ClassNotFoundException, IOException, DAOException {
 		if(instance == null)
 			instance = new CorsistaIdGenerator();
 		return instance;
