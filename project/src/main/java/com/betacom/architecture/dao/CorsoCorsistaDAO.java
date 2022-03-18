@@ -13,7 +13,7 @@ import javax.sql.rowset.RowSetProvider;
 
 import com.betacom.businesscomponent.model.CorsoCorsista;
 
-public class CorsoCorsistaDAO extends CorsoCorsistaDAOAdapter implements DAOConstants {
+public class CorsoCorsistaDAO implements DAOConstants {
 	private CachedRowSet rowSet;
 
 	public static CorsoCorsistaDAO getFactory() throws DAOException {
@@ -60,9 +60,7 @@ public class CorsoCorsistaDAO extends CorsoCorsistaDAOAdapter implements DAOCons
 		}
 		return corsoCorsista;
 	}
-
-	//
-	@Override
+	
 	public List<CorsoCorsista> getAll(Connection conn) throws DAOException {
 		List<CorsoCorsista> corsoCorsisti = new ArrayList<>();
 
