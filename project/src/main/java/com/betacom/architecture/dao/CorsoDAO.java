@@ -28,6 +28,29 @@ public class CorsoDAO implements DAOConstants {
 			throw new DAOException(sql);
 		}
 	}
+	
+	public Corso getById(Connection conn, long cod_corso) throws DAOException {
+		Corso corso  = null;
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(SELECT_CORSO_BYID);
+			ps.setLong(1, cod_corso);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				corso = new Corso();
+				corso.setCodCorso(rs.getInt(1));
+				corso.setNomeCorso(rs.getString(2));
+				corso.setDataInizioCorso(new java.util.Date(rs.getDate(3).getTime()));
+				corso.setDataFineCorso(new java.util.Date(rs.getDate(4).getTime()));
+				corso.setCostoCorso(rs.getDouble(5));
+				corso.setCommentiCorso(rs.getString(6));
+				corso.setAulaCorso(rs.getString(7));
+			}	
+		}catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return corso;
+	}
 
 	public List<Corso> getAll(Connection conn) throws DAOException {
 		List<Corso> corsi = new ArrayList<>();
