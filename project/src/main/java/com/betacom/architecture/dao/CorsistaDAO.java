@@ -62,7 +62,6 @@ public class CorsistaDAO implements DAOConstants{
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(SELECT_CORSISTI);
-			rs.beforeFirst();
 			while(rs.next()) {
 				Corsista corsista = new Corsista();
 				corsista.setCodCorsista(rs.getInt(1));
