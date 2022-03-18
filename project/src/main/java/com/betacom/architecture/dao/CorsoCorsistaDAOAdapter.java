@@ -4,7 +4,7 @@ import java.sql.Connection;
 
 import com.betacom.businesscomponent.model.CorsoCorsista;
 
-public abstract class CorsoCorsistaDAOAdapter extends GenericDAO<CorsoCorsista> {
+public abstract class CorsoCorsistaDAOAdapter implements GenericDAO<CorsoCorsista> {
 
 	@Override
 	public CorsoCorsista getById(Connection conn, long id) throws DAOException {

@@ -14,6 +14,10 @@ import com.betacom.businesscomponent.model.CorsoCorsista;
 public class CorsoCorsistaDAO extends CorsoCorsistaDAOAdapter implements DAOConstants {
 	private CachedRowSet rowSet;
 
+	public static CorsoCorsistaDAO getFactory() throws DAOException {
+		return new CorsoCorsistaDAO();
+	}
+	
 	private CorsoCorsistaDAO() throws DAOException {
 		try {
 			rowSet = RowSetProvider.newFactory().createCachedRowSet();
@@ -26,7 +30,7 @@ public class CorsoCorsistaDAO extends CorsoCorsistaDAOAdapter implements DAOCons
 	public void create(Connection conn, CorsoCorsista object) throws DAOException {
 		try {
 			rowSet.setCommand(SELECT_CORSO_CORSISTA);
-			rowSet.execute();
+			rowSet.execute(conn);
 			rowSet.moveToInsertRow();
 			rowSet.updateLong(1, object.getCodCorso());
 			rowSet.updateLong(2, object.getCodCorsista());
