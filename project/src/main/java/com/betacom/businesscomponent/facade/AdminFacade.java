@@ -1,8 +1,11 @@
 package com.betacom.businesscomponent.facade;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import com.betacom.architecture.dao.DAOException;
+import com.betacom.businesscomponent.CorsoCorsistaBC;
 import com.betacom.businesscomponent.model.Corsista;
 import com.betacom.businesscomponent.model.Corso;
 import com.betacom.businesscomponent.model.Docente;
@@ -37,9 +40,9 @@ public class AdminFacade {
 		throw new UnsupportedOperationException();
 	}
 
-	public Corso getTrendCourse() {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public Corso getTrendCourse() throws DAOException, ClassNotFoundException, IOException {
+		CorsoCorsistaBC corsoCorsistaBC = new CorsoCorsistaBC();
+		return corsoCorsistaBC.getTrendCourse();
 	}
 
 	public Date getLastDate() {
