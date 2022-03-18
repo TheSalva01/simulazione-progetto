@@ -7,4 +7,5 @@ public interface DAOConstants {
 	
 	String SELECT_CORSISTA_SEQ = "select corsista_seq.nextval from dual";
 	String SELECT_CORSISTI = "select * from corsista";
+	String DELETE_CORSISTA = "delete from corsista where cod_corsista = ?";
 }
