@@ -21,13 +21,5 @@ public class CorsoCorsistaBC {
 		CorsoCorsistaDAO.getFactory().create(conn, corsoCorsista);
 	}
 	
-	public Corso getTrendCourse() throws DAOException {
-		List<CorsoCorsista> corsoCorsisti = CorsoCorsistaDAO.getFactory().getAll(conn);
-		Corso corso = null; 
-		
-		
-		
-		return null; 
-	}
 	
 }
