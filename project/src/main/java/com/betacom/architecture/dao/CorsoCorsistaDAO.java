@@ -83,4 +83,32 @@ public class CorsoCorsistaDAO implements DAOConstants {
 		return corsoCorsisti;
 	}
 
+	
+	public int getTrendCourseId(Connection conn) throws DAOException {
+		int trendingCourseId = 0;
+		try {
+			Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+			int maxCorsisti = 0; 
+			
+			ResultSet rs = statement.executeQuery(SELECT_TRENDING_CORSO);
+			rs.beforeFirst();
+			while(rs.next()) {
+				int corso = rs.getInt(1);
+				int corsisti = rs.getInt(2);
+				
+				if(trendingCourseId == 0) {
+					trendingCourseId = corso;
+				} else if(corsisti > maxCorsisti){
+					trendingCourseId = corso; 
+					maxCorsisti = corsisti; 
+				}
+			}
+		} catch (SQLException exc) {
+			throw new DAOException(exc);
+		}
+		
+		return trendingCourseId;
+	}
+
 }
