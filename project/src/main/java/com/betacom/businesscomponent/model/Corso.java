@@ -10,7 +10,16 @@ public class Corso {
 	private double costoCorso;
 	private String commentiCorso;
 	private String aulaCorso;
+	private int docente;
 	
+	public int getDocente() {
+		return docente;
+	}
+
+	public void setDocente(int docente) {
+		this.docente = docente;
+	}
+
 	public long getCodCorso() {
 		return codCorso;
 	}
@@ -71,7 +80,7 @@ public class Corso {
 	public String toString() {
 		return "Corso [codCorso=" + codCorso + ", nomeCorso=" + nomeCorso + ", dataInizioCorso=" + dataInizioCorso
 				+ ", dataFineCorso=" + dataFineCorso + ", costoCorso=" + costoCorso + ", commentiCorso=" + commentiCorso
-				+ ", aulaCorso=" + aulaCorso + "]";
+				+ ", aulaCorso=" + aulaCorso + ", docente=" + docente + "]";
 	}
 	
 }
