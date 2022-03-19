@@ -2,6 +2,7 @@ package com.betacom.businesscomponent;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 import com.betacom.architecture.dao.CorsoCorsistaDAO;
 import com.betacom.architecture.dao.CorsoDAO;
@@ -26,5 +27,9 @@ public class CorsoCorsistaBC {
 		Corso corso = CorsoDAO.getFactory().getById(conn, trendingCourseId); 
 		
 		return corso; 
+	}
+	
+	public List<CorsoCorsista> getAll() throws DAOException {
+		return CorsoCorsistaDAO.getFactory().getAll(conn);
 	}
 }
