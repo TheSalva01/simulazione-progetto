@@ -21,9 +21,10 @@ public class AdminFacade {
 		return adminFacade;
 	}
 
-	public void createCorsista(Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
-		CorsistaBC cBC = new CorsistaBC();
-		cBC.create(corsista);
+	/* devo popolare la tabella Corsista ma anche quella CorsoCorsista */
+	public void createCorsista(Corsista corsista, Corso corso) throws DAOException, ClassNotFoundException, IOException {
+		// TODO: Implement this method
+		throw new UnsupportedOperationException();
 	}
 
 	public void deleteCorso(Corso corso) {
