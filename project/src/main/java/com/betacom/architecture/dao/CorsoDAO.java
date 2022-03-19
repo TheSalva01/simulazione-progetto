@@ -29,6 +29,23 @@ public class CorsoDAO implements DAOConstants {
 		}
 	}
 	
+	
+	public int getAVGDay(Connection conn) throws DAOException {
+			int valore = 0;
+		try {
+			Statement stmt = conn.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE, 
+					ResultSet.CONCUR_READ_ONLY);
+			
+			ResultSet rs = stmt.executeQuery(SELECT_MEDIA_CORSO);
+			if(rs.next()) 
+				valore = (int) rs.getDouble(1); 
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return valore;
+	}
+	
 	public Corso getById(Connection conn, long cod_corso) throws DAOException {
 		Corso corso  = null;
 		PreparedStatement ps;
@@ -43,7 +60,7 @@ public class CorsoDAO implements DAOConstants {
 				corso.setDataInizioCorso(new java.util.Date(rs.getDate(3).getTime()));
 				corso.setDataFineCorso(new java.util.Date(rs.getDate(4).getTime()));
 				corso.setCostoCorso(rs.getDouble(5));
-				corso.setCommentiCorso(rs.getString(6));
+				corso.setCommentiCorso(rs.getString(6).split("||"));
 				corso.setAulaCorso(rs.getString(7));
 			}	
 		}catch (SQLException sql) {
@@ -68,7 +85,7 @@ public class CorsoDAO implements DAOConstants {
 				c.setDataInizioCorso(new java.util.Date(rs.getDate(3).getTime()));
 				c.setDataFineCorso(new java.util.Date(rs.getDate(4).getTime()));
 				c.setCostoCorso(rs.getDouble(5));
-				c.setCommentiCorso(rs.getString(6));
+				c.setCommentiCorso(rs.getString(6).split("||"));
 				c.setAulaCorso(rs.getString(7));
 				corsi.add(c);
 			}

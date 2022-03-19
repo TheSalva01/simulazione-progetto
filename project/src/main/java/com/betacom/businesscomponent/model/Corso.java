@@ -8,7 +8,7 @@ public class Corso {
 	private Date dataInizioCorso;
 	private Date dataFineCorso;
 	private double costoCorso;
-	private String commentiCorso;
+	private String[] commentiCorso;
 	private String aulaCorso;
 	private int docente;
 	
@@ -60,14 +60,15 @@ public class Corso {
 		this.costoCorso = costoCorso;
 	}
 	
-	public String getCommentiCorso() {
+	
+	public String[] getCommentiCorso() {
 		return commentiCorso;
 	}
-	
-	public void setCommentiCorso(String commentiCorso) {
+
+	public void setCommentiCorso(String[] commentiCorso) {
 		this.commentiCorso = commentiCorso;
 	}
-	
+
 	public String getAulaCorso() {
 		return aulaCorso;
 	}

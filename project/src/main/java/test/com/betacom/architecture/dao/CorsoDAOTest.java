@@ -33,7 +33,7 @@ class CorsoDAOTest {
 		corso.setDataInizioCorso(new GregorianCalendar(2000, 9, 15).getTime());
 		corso.setDataFineCorso(new GregorianCalendar(2001, 6, 30).getTime());
 		corso.setCostoCorso(2400.00);
-		corso.setCommentiCorso("solo per ieri a pochi euro");
+		corso.setCommentiCorso(new String []{"solo per ieri a pochi euro"});
 		corso.setAulaCorso("29H");
 		corso.setDocente(541);
 		System.out.println(corso);
@@ -62,7 +62,7 @@ class CorsoDAOTest {
 			System.out.println(corsi);
 		} catch (DAOException exc) {
 			exc.printStackTrace();
-			fail("Recupero getAll fallito");
+			fail("Recupero corsi fallito");
 		}
 	}
 	
@@ -75,7 +75,7 @@ class CorsoDAOTest {
 			System.out.println(docenti);
 		}catch (DAOException exc) {
 			exc.printStackTrace();
-			fail("Recupero getDocenti fallito");
+			fail("Recupero Docenti fallito");
 		}
 	}
 	
