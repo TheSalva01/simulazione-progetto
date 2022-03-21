@@ -11,3 +11,7 @@ insert into corso values(3, 'Corso per haters', '15-SET-2005', '07-GIU-2006', 15
 insert into corso values(4, 'Corricorso', '09-SET-2000', '05-GIU-2001', 3000.00, 'Imparato a imparare', 'D4', 800);
 insert into corso values(5, 'Corso covid', '04-SET-2002', '06-GIU-2003', 1800.00, 'Partecipato al covid party', 'C19', 541);
 insert into corso values(6, 'Corso per Saiyan', '13-SET-2003', '08-GIU-2004', 3200.00, 'Potenziato aura', 'C18', 63103);
+
+insert into CORSISTA values(127, 'Giacomo', 'Rossi', 1);
+insert into CORSISTA values(128, 'Dario', 'Rossi', 2);
+insert into CORSISTA values(129, 'Francesco', 'Verdi', 3);

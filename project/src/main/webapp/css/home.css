@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("https://w3.adisupuglia.it/wp-content/uploads/2014/07/university-background-06.jpg");
+  	background-repeat: no-repeat; 
+  	background-size: cover; 
+}
