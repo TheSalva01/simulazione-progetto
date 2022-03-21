@@ -25,7 +25,17 @@ public class AdminFacade {
 	}
 
 	public void createCorsista(Corsista corsista, Corso corso) throws DAOException, ClassNotFoundException, IOException {
+		CorsistaBC corsistaBC = new CorsistaBC();
+		CorsoCorsistaBC corsoCorsistaBC = new CorsoCorsistaBC(); 
 		
+		long idCorso = corso.getCodCorso();
+		Corsista c = corsistaBC.create(corsista);
+		
+		CorsoCorsista corsoCorsista = new CorsoCorsista();
+		corsoCorsista.setCodCorso(idCorso);
+		corsoCorsista.setCodCorsista(c.getCodCorsista());
+		
+		corsoCorsistaBC.create(corsoCorsista);
 	}
 
 	public void deleteCorso(Corso corso) throws DAOException, ClassNotFoundException, IOException {
@@ -56,7 +66,7 @@ public class AdminFacade {
 
 	public int getMidLength() throws ClassNotFoundException, IOException, SQLException {
 		CorsoBC corsoBC = new CorsoBC(); 
-		return corsoBC.getMidlenght();
+		return corsoBC.getMidLenght();
 	}
 
 	public int getComment() throws ClassNotFoundException, IOException, SQLException {
