@@ -111,4 +111,17 @@ public class CorsoCorsistaDAO implements DAOConstants {
 		return trendingCourseId;
 	}
 
+	public void delete(Connection conn, CorsoCorsista corsoCorsista) throws DAOException {
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(DELETE_CORSO_CORSISTA);
+			ps.setLong(1, corsoCorsista.getCodCorso());
+			ps.setLong(2, corsoCorsista.getCodCorsista());
+			ps.execute();
+			conn.commit();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+	}
+	
 }
