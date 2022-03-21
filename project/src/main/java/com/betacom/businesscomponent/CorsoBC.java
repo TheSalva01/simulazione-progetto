@@ -66,7 +66,7 @@ public class CorsoBC {
 		return listaD;
 	}
 	
-	private int getSlotAvailable(Corso corso) throws DAOException, ClassNotFoundException, IOException {
+	public int getSlotAvailable(Corso corso) throws DAOException, ClassNotFoundException, IOException {
 		try {
 			CorsoCorsistaBC cBC = new CorsoCorsistaBC();
 			int posti = 12;
