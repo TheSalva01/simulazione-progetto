@@ -25,15 +25,7 @@ public class AdminFacade {
 	}
 
 	public void createCorsista(Corsista corsista, Corso corso) throws DAOException, ClassNotFoundException, IOException {
-		CorsoCorsistaBC corsoCorsistaBC = new CorsoCorsistaBC();
-		CorsistaBC corsistaBC = new CorsistaBC(); 
-		
-		CorsoCorsista corsoCorsista = new CorsoCorsista(); 
-		corsoCorsista.setCodCorsista(corsista.getCodCorsista());
-		corsoCorsista.setCodCorso(corso.getCodCorso());
-		 
-		corsistaBC.create(corsista);
-		corsoCorsistaBC.create(corsoCorsista);
+	
 	}
 
 	public void deleteCorso(Corso corso) throws DAOException, ClassNotFoundException, IOException {
