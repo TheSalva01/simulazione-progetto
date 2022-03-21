@@ -4,9 +4,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<%@include file="CDN.html" %>
 <title>progetto</title>
 </head>
 <body>
-	<h1>Hello ijhvfberjnvelr</h1>
+	<jsp:include page="navBar.jsp"/>
+	<main>
+		<h1>Hello</h1>
+	</main>
+	<footer>
+	
+	</footer>
 </body>
 </html>
