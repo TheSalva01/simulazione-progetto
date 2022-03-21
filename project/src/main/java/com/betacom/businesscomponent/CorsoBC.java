@@ -36,7 +36,7 @@ public class CorsoBC {
 		}
 	}
 
-	public Date getLastDate(Corso corso) throws DAOException {
+	public Date getLastDate() throws DAOException {
 			List<Corso> lista = getCorsi();	
 			lista.sort(new DateComparator());
 			return lista.get(lista.size() - 1).getDataInizioCorso();
@@ -68,7 +68,7 @@ public class CorsoBC {
 		return listaD;
 	}
 	
-	private int getSlotAvailable(Corso corso) throws DAOException, ClassNotFoundException, IOException {
+	public int getSlotAvailable(Corso corso) throws DAOException, ClassNotFoundException, IOException {
 		try {
 			CorsoCorsistaBC cBC = new CorsoCorsistaBC();
 			int posti = 12;

@@ -1,6 +1,7 @@
 package com.betacom.businesscomponent.facade;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -35,9 +36,10 @@ public class AdminFacade {
 		corsoCorsistaBC.create(corsoCorsista);
 	}
 
-	public void deleteCorso(Corso corso) {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public void deleteCorso(Corso corso) throws DAOException, ClassNotFoundException, IOException {
+		CorsoBC corsoBC = new CorsoBC();
+		
+		corsoBC.delete(corso);
 	}
 
 	public List<Corsista> getCorsisti() throws DAOException, ClassNotFoundException, IOException {
@@ -55,29 +57,30 @@ public class AdminFacade {
 		return corsoCorsistaBC.getTrendCourse();
 	}
 
-	public Date getLastDate() {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public Date getLastDate() throws DAOException, ClassNotFoundException, IOException {
+		CorsoBC corsoBC = new CorsoBC(); 
+		return corsoBC.getLastDate();
 	}
 
-	public int getMidLength() {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public int getMidLength() throws ClassNotFoundException, IOException, SQLException {
+		CorsoBC corsoBC = new CorsoBC(); 
+		return corsoBC.getMidlenght();
 	}
 
-	public String getComment() {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public int getComment() throws ClassNotFoundException, IOException, SQLException {
+		CorsoBC corsoBC = new CorsoBC();
+		return corsoBC.getComment(); 
 	}
 
-	public List<Docente> getTeacherCourses() {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public List<Docente> getTeacherCourses() throws ClassNotFoundException, IOException, SQLException {
+		CorsoBC corsoBC = new CorsoBC();
+		return corsoBC.getTeacherCourses();
 	}
 
-	public int getSlotsAvailable() {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+	public int getSlotsAvailable(Corso corso) throws DAOException, ClassNotFoundException, IOException {
+		CorsoBC corsoBC = new CorsoBC();
+		
+		return corsoBC.getSlotAvailable(corso);
 	}
 
 }
