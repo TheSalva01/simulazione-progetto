@@ -33,7 +33,7 @@ class CorsoDAOTest {
 		corso.setDataInizioCorso(new GregorianCalendar(2000, 9, 15).getTime());
 		corso.setDataFineCorso(new GregorianCalendar(2001, 6, 30).getTime());
 		corso.setCostoCorso(2400.00);
-		corso.setCommentiCorso(new String []{"solo per ieri a pochi euro"});
+		corso.setCommentiCorso("solo per ieri a pochi euro");
 		corso.setAulaCorso("29H");
 		corso.setDocente(541);
 		System.out.println(corso);
