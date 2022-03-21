@@ -1,7 +1,6 @@
 package com.betacom.businesscomponent.facade;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -64,24 +63,23 @@ public class AdminFacade {
 		return corsoBC.getLastDate();
 	}
 
-	public int getMidLength() throws ClassNotFoundException, IOException, SQLException {
+	public int getMidLength() throws ClassNotFoundException, IOException, DAOException {
 		CorsoBC corsoBC = new CorsoBC(); 
 		return corsoBC.getMidLenght();
 	}
 
-	public int getComment() throws ClassNotFoundException, IOException, SQLException {
+	public int getComment() throws ClassNotFoundException, IOException, DAOException{
 		CorsoBC corsoBC = new CorsoBC();
 		return corsoBC.getComment(); 
 	}
 
-	public List<Docente> getTeacherCourses() throws ClassNotFoundException, IOException, SQLException {
+	public List<Docente> getTeacherCourses() throws ClassNotFoundException, IOException, DAOException {
 		CorsoBC corsoBC = new CorsoBC();
 		return corsoBC.getTeacherCourses();
 	}
 
 	public int getSlotsAvailable(Corso corso) throws DAOException, ClassNotFoundException, IOException {
 		CorsoBC corsoBC = new CorsoBC();
-		
 		return corsoBC.getSlotAvailable(corso);
 	}
 
