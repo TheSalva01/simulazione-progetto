@@ -3,19 +3,13 @@ package com.betacom.businesscomponent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import com.betacom.architecture.dao.CorsoDAO;
 import com.betacom.architecture.dao.DAOException;
 import com.betacom.architecture.dbaccess.DBAccess;
-import com.betacom.businesscomponent.model.Corsista;
 import com.betacom.businesscomponent.model.Corso;
 import com.betacom.businesscomponent.model.CorsoCorsista;
 import com.betacom.businesscomponent.model.Docente;
@@ -23,6 +17,10 @@ import com.betacom.businesscomponent.utility.DateComparator;
 
 public class CorsoBC {
 	private Connection conn;
+	
+	public static CorsoBC getFactory() throws DAOException, ClassNotFoundException, IOException {
+		return new CorsoBC();
+	}
 
 	public CorsoBC() throws DAOException, ClassNotFoundException, IOException {
 		conn = DBAccess.getConnection();
@@ -76,7 +74,6 @@ public class CorsoBC {
 				if (corsoCorsista.getCodCorso() == corso.getCodCorso()) {
 					posti--;
 				}
-				
 			}
 			return posti;
 		} catch (SQLException sql) {
