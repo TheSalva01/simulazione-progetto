@@ -18,6 +18,7 @@ public interface DAOConstants {
 	String DELETE_CORSO = "Delete from corso where cod_corso = ?";
 	String SELECT_DOCENTE_CORSI = "Select cod_docente, nome_docente, cognome_docente, cv_docente, cod_corso from corso, docente where corso.docente = docente.cod_docente";
 	String SELECT_MEDIA_CORSO = "Select avg(data_fine_corso - data_inizio_corso) from corsi";
+	String DELETE_CORSO_CORSISTA = "Delete from corso_corsista where cod_corso = ? and cod_corsista = ?";
 	
 	String DELETE_CORSISTA = "delete from corsista where cod_corsista = ?";
 }

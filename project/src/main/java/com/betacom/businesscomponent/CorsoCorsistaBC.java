@@ -32,4 +32,8 @@ public class CorsoCorsistaBC {
 	public List<CorsoCorsista> getAll() throws DAOException {
 		return CorsoCorsistaDAO.getFactory().getAll(conn);
 	}
+	
+	public void delete(CorsoCorsista corsoCorsista) throws DAOException {
+		CorsoCorsistaDAO.getFactory().delete(conn, corsoCorsista);
+	}
 }
