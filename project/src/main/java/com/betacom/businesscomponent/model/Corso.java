@@ -8,7 +8,7 @@ public class Corso {
 	private Date dataInizioCorso;
 	private Date dataFineCorso;
 	private double costoCorso;
-	private String[] commentiCorso;
+	private String commentiCorso;
 	private String aulaCorso;
 	private int docente;
 	
@@ -61,11 +61,11 @@ public class Corso {
 	}
 	
 	
-	public String[] getCommentiCorso() {
+	public String getCommentiCorso() {
 		return commentiCorso;
 	}
 
-	public void setCommentiCorso(String[] commentiCorso) {
+	public void setCommentiCorso(String commentiCorso) {
 		this.commentiCorso = commentiCorso;
 	}
 
@@ -83,5 +83,4 @@ public class Corso {
 				+ ", dataFineCorso=" + dataFineCorso + ", costoCorso=" + costoCorso + ", commentiCorso=" + commentiCorso
 				+ ", aulaCorso=" + aulaCorso + ", docente=" + docente + "]";
 	}
-	
 }
