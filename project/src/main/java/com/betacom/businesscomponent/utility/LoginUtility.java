@@ -22,7 +22,7 @@ public class LoginUtility implements DAOConstants {
 			PreparedStatement ps = conn.prepareStatement(SELECT_CODADMIN);
 			ps.setString(1, nome_admin);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next())
+			if (rs.next())
 				return rs.getString(1);
 			return null;
 		} catch (SQLException sql) {
