@@ -17,33 +17,41 @@
 	<body>
 		<jsp:include page="navBar.jsp"/>
 		<main>
-			<h2 class="mx-4 my-3">Lista Corsisti:</h2>
-			<table class="table">
-				<thead class="thead-dark">
-				    <tr>
-					      <th scope="col">#</th>
-					      <th scope="col">Nome</th>
-					      <th scope="col">Cognome</th>
-					      <th scope="col">Prec Form</th>
-				    </tr>
-				</thead>
+			<div class="container-fluid m-0 p-0">
+				<h2 class="mx-4 my-3 float-left">LISTA CORSISTI</h2>
+				<div class="float-right m-3">
+					<button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Nuovo Corsista</button>
+					<button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Statistiche</button>
+					<button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Elimina Corsi</button>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead class="thead-dark">
+					    <tr class="font-weight-bold text-center">
+						      <th class="col-3" scope="col"><h5 class="m-0">Id</h5></th>
+						      <th class="col-3" scope="col"><h5 class="m-0">Nome</h5></th>
+						      <th class="col-3" scope="col"><h5 class="m-0">Cognome</h5></th>
+						      <th class="col-3" scope="col"><h5 class="m-0">Prec. Form.</h5></th>
+					    </tr>
+					</thead>
 					<%
 						List<Corsista> c = AdminFacade.getInstance().getCorsisti();
 						for(int i = 0; i < c.size(); i++) {
 					%>
 					<tbody>
-					    <tr>
-						      <th scope="row">1</th>
-						      <td><%=c.get(i).getNomeCorsista()%></td>
-						      <td><%=c.get(i).getCognomeCorsista()%></td>
+					    <tr class="font-weight-bold text-center">
+					   		<th class="col-3" scope="row"><%=c.get(i).getCodCorsista()%></th>
+					      	<td class="col-3"><%=c.get(i).getNomeCorsista()%></td>
+					      	<td class="col-3"><%=c.get(i).getCognomeCorsista()%></td>
+						    <td class="col-3">
+								<input style="width:20px; height:20px;" disabled type="checkbox" name="precForm" <% if (c.get(i).getPrecForm() == 1) {out.print("checked");} %>/>
+							</td>
 					    </tr>
 					</tbody>
 					<%
 						}
 					%>
 				</table>
-				
-			</ul>
+			</div>
 		</main>
 	</body>
 </html>

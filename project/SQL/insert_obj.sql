@@ -13,5 +13,5 @@ insert into corso values(5, 'Corso covid', '04-SET-2002', '06-GIU-2003', 1800.00
 insert into corso values(6, 'Corso per Saiyan', '13-SET-2003', '08-GIU-2004', 3200.00, 'Potenziato aura', 'C18', 63103);
 
 insert into CORSISTA values(127, 'Giacomo', 'Rossi', 1);
-insert into CORSISTA values(128, 'Dario', 'Rossi', 2);
-insert into CORSISTA values(129, 'Francesco', 'Verdi', 3);
+insert into CORSISTA values(128, 'Dario', 'Rossi', 0);
+insert into CORSISTA values(129, 'Francesco', 'Verdi', 1);
