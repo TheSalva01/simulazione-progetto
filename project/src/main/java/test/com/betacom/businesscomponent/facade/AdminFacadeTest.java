@@ -234,6 +234,25 @@ class AdminFacadeTest {
 			fail("Errore nel getSlotsAvailable");
 		}
 	}
+	
+	@Test
+	@Order(10)
+	void testGetCorsi() {
+		try {
+			AdminFacade.getInstance().createCorsista(corsista, corso);
+			AdminFacade.getInstance().createCorsista(corsista2, corso);
+			AdminFacade.getInstance().createCorsista(corsista3, corso2);
+			List<Corso> corsi = AdminFacade.getInstance().getCorsi();
+			for(Corso c: corsi)
+				System.out.println(c.toString());
+			System.out.println("getCorsifunzionate");
+		} catch(DAOException | ClassNotFoundException | IOException exc) {
+			exc.printStackTrace();
+			fail("Errore nel getCorsisti");
+		}
+	}
+	
+	
 
 	@AfterAll
 	static void tearAfterAll() throws Exception {

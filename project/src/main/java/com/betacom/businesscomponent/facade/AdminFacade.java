@@ -82,5 +82,10 @@ public class AdminFacade {
 		CorsoBC corsoBC = new CorsoBC();
 		return corsoBC.getSlotAvailable(corso);
 	}
+	
+	public List<Corso> getCorsi() throws DAOException, ClassNotFoundException, IOException{
+		CorsoBC corsoBC = new CorsoBC();
+		return corsoBC.getCorsi();
+	}
 
 }
