@@ -42,6 +42,7 @@ public class CorsoDAO implements DAOConstants {
 			rowSet.updateDouble(5, entity.getCostoCorso());
 			rowSet.updateString(6, entity.getCommentiCorso());
 			rowSet.updateString(7, entity.getAulaCorso());
+			rowSet.insertRow();
 			rowSet.moveToCurrentRow();
 			rowSet.acceptChanges();
 		} catch (SQLException sql) {

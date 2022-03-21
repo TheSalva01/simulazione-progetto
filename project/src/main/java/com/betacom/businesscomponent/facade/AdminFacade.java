@@ -33,7 +33,7 @@ public class AdminFacade {
 		
 		CorsoCorsista corsoCorsista = new CorsoCorsista();
 		corsoCorsista.setCodCorso(idCorso);
-		corsoCorsista.setCodCorsista(c.getCodCorsista());
+		corsoCorsista.setCodCorsista(corsista.getCodCorsista());
 		
 		corsoCorsistaBC.create(corsoCorsista);
 	}

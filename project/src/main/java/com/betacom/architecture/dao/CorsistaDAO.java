@@ -33,7 +33,7 @@ public class CorsistaDAO implements DAOConstants{
 			rowSet.setCommand(SELECT_CORSISTI);
 			rowSet.execute(conn);
 			rowSet.moveToInsertRow();
-			rowSet.updateInt(1, corsista.getCodCorsista());
+			rowSet.updateLong(1, corsista.getCodCorsista());
 			rowSet.updateString(2, corsista.getNomeCorsista());
 			rowSet.updateString(3, corsista.getCognomeCorsista());
 			rowSet.updateInt(4, corsista.getPrecForm());
@@ -50,7 +50,7 @@ public class CorsistaDAO implements DAOConstants{
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(DELETE_CORSISTA);
-			ps.setInt(1, corsista.getCodCorsista());
+			ps.setLong(1, corsista.getCodCorsista());
 			ps.execute();
 			conn.commit();
 		} catch (SQLException sql) {
