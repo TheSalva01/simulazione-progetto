@@ -26,6 +26,10 @@ public class CorsoBC {
 		conn = DBAccess.getConnection();
 	}
 	
+	public void create(Corso corso) throws DAOException {
+				CorsoDAO.getFactory().create(conn, corso);
+		}
+	
 	public List<Corso> getCorsi() throws DAOException {
 		try {
 			return CorsoDAO.getFactory().getAll(conn);
