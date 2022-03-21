@@ -16,7 +16,7 @@ class CorsistaIdGeneratorTest {
 		try {
 			CorsistaIdGenerator corsIdGen = CorsistaIdGenerator.getInstance();
 			assertNotNull(corsIdGen, "Istanza non creata correttamente");
-			int valore = corsIdGen.nextVal();
+			long valore = corsIdGen.nextVal();
 			assertEquals(valore, corsIdGen.nextVal() - 1);
 		} catch(ClassNotFoundException | DAOException | IOException exc) {
 			exc.printStackTrace();

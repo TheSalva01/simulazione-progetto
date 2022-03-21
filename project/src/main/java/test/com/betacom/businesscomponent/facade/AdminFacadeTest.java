@@ -11,7 +11,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import com.betacom.architecture.dao.DAOException;
 import com.betacom.architecture.dbaccess.DBAccess;
@@ -22,6 +25,7 @@ import com.betacom.businesscomponent.model.Corsista;
 import com.betacom.businesscomponent.model.Corso;
 import com.betacom.businesscomponent.model.CorsoCorsista;
 
+@TestMethodOrder(OrderAnnotation.class)
 class AdminFacadeTest {
 	Connection conn;
 	Corsista corsista;
@@ -37,7 +41,7 @@ class AdminFacadeTest {
 		corso.setCostoCorso(1500.00);
 		corso.setDocente(800);
 		corso.setNomeCorso("corso di prova");
-		GregorianCalendar gc = new GregorianCalendar(2, 9, 2021);
+		GregorianCalendar gc = new GregorianCalendar(2021, 9, 2);
 		corso.setDataInizioCorso(gc.getTime());
 		corso.setDataFineCorso(new Date());
 		
@@ -53,9 +57,6 @@ class AdminFacadeTest {
 		corsista.setNomeCorsista("Mario");
 		corsista.setCognomeCorsista("Giallo");
 		corsista.setPrecForm(1);
-		
-		cc = new CorsoCorsista();
-		cc.setCodCorso(7);
 	}
 
 	@AfterEach
@@ -71,6 +72,7 @@ class AdminFacadeTest {
 	}
 
 	@Test
+	@Order(1)
 	void testCreateCorsista() {
 		try {
 			AdminFacade.getInstance().createCorsista(corsista, corso);
@@ -78,17 +80,6 @@ class AdminFacadeTest {
 		} catch(DAOException | ClassNotFoundException | IOException exc) {
 			exc.printStackTrace();
 			fail("Errore nel CreateCorsista");
-		}
-	}
-	
-	@Test
-	void testDeleteCorso(){
-		try {
-			AdminFacade.getInstance().deleteCorso(corso);
-			System.out.println("Corso eliminato");
-		} catch(DAOException | ClassNotFoundException | IOException exc) {
-			exc.printStackTrace();
-			fail("Errore nel DeleteCorso");
 		}
 	}
 	
