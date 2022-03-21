@@ -45,7 +45,7 @@ public class CorsoBC {
 	}
 	
 	
-	public int getMidlenght() throws DAOException, SQLException {
+	public int getMidLenght() throws DAOException, SQLException {
 		return CorsoDAO.getFactory().getAVGDay(conn);
 	}
 	
