@@ -28,8 +28,8 @@ public class CorsoDAO implements DAOConstants {
 			rowSet.moveToInsertRow();
 			rowSet.updateLong(1, entity.getCodCorso());
 			rowSet.updateString(2, entity.getNomeCorso());
-			rowSet.updateDate(3, (Date) entity.getDataInizioCorso());
-			rowSet.updateDate(4, (Date) entity.getDataFineCorso());
+			rowSet.updateDate(3, new java.sql.Date(entity.getDataInizioCorso().getTime()));
+			rowSet.updateDate(4, new java.sql.Date(entity.getDataFineCorso().getTime()));
 			rowSet.updateDouble(5, entity.getCostoCorso());
 			rowSet.updateString(6, entity.getCommentiCorso());
 			rowSet.updateString(7, entity.getAulaCorso());
