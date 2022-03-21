@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.rowset.CachedRowSet;
+import javax.sql.rowset.RowSetProvider;
 
 import com.betacom.businesscomponent.model.Corso;
 import com.betacom.businesscomponent.model.Docente;
@@ -19,6 +20,14 @@ public class CorsoDAO implements DAOConstants {
 
 	public static CorsoDAO getFactory() throws DAOException {
 		return new CorsoDAO();
+	}
+	
+	private CorsoDAO() throws DAOException {
+		try {
+			rowSet = RowSetProvider.newFactory().createCachedRowSet();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
 	}
 	
 	public void create(Connection conn, Corso entity) throws DAOException {
