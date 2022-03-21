@@ -18,11 +18,12 @@ public class CorsistaBC {
 		conn = DBAccess.getConnection();
 	}
 	
-	public void create(Corsista corsista)
+	public Corsista create(Corsista corsista)
 			throws ClassNotFoundException, IOException, DAOException {
 		try {
 			corsista.setCodCorsista(CorsistaIdGenerator.getInstance().nextVal());
 			CorsistaDAO.getFactory().create(conn, corsista);
+			return corsista;
 		} catch(SQLException sql) {
 			throw new DAOException(sql);
 		}

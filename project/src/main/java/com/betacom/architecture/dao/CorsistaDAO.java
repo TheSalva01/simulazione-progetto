@@ -28,7 +28,7 @@ public class CorsistaDAO implements DAOConstants{
 		}
 	}
 	
-	public void create(Connection conn, Corsista corsista) throws DAOException {
+	public Corsista create(Connection conn, Corsista corsista) throws DAOException {
 		try{
 			rowSet.setCommand(SELECT_CORSISTI);
 			rowSet.execute(conn);
@@ -40,6 +40,7 @@ public class CorsistaDAO implements DAOConstants{
 			rowSet.insertRow();
 			rowSet.moveToCurrentRow();
 			rowSet.acceptChanges();
+			return corsista;
 		} catch(SQLException sql) {
 			throw new DAOException(sql);
 		}
