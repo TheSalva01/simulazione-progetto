@@ -1,6 +1,7 @@
 package com.betacom.architecture.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,13 +9,35 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.rowset.CachedRowSet;
+
 import com.betacom.businesscomponent.model.Corso;
 import com.betacom.businesscomponent.model.Docente;
 
 public class CorsoDAO implements DAOConstants {
+	private CachedRowSet rowSet;
 
 	public static CorsoDAO getFactory() throws DAOException {
 		return new CorsoDAO();
+	}
+	
+	public void create(Connection conn, Corso entity) throws DAOException {
+		try {
+			rowSet.setCommand(SELECT_CORSO);
+			rowSet.execute(conn);
+			rowSet.moveToInsertRow();
+			rowSet.updateLong(1, entity.getCodCorso());
+			rowSet.updateString(2, entity.getNomeCorso());
+			rowSet.updateDate(3, (Date) entity.getDataInizioCorso());
+			rowSet.updateDate(4, (Date) entity.getDataFineCorso());
+			rowSet.updateDouble(5, entity.getCostoCorso());
+			rowSet.updateString(6, entity.getCommentiCorso());
+			rowSet.updateString(7, entity.getAulaCorso());
+			rowSet.moveToCurrentRow();
+			rowSet.acceptChanges();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
 	}
 
 	public void delete(Connection conn, Corso entity) throws DAOException {
@@ -60,7 +83,7 @@ public class CorsoDAO implements DAOConstants {
 				corso.setDataInizioCorso(new java.util.Date(rs.getDate(3).getTime()));
 				corso.setDataFineCorso(new java.util.Date(rs.getDate(4).getTime()));
 				corso.setCostoCorso(rs.getDouble(5));
-				corso.setCommentiCorso(rs.getString(6).split("||"));
+				corso.setCommentiCorso(rs.getString(6));
 				corso.setAulaCorso(rs.getString(7));
 			}	
 		}catch (SQLException sql) {
@@ -85,7 +108,7 @@ public class CorsoDAO implements DAOConstants {
 				c.setDataInizioCorso(new java.util.Date(rs.getDate(3).getTime()));
 				c.setDataFineCorso(new java.util.Date(rs.getDate(4).getTime()));
 				c.setCostoCorso(rs.getDouble(5));
-				c.setCommentiCorso(rs.getString(6).split("||"));
+				c.setCommentiCorso(rs.getString(6));
 				c.setAulaCorso(rs.getString(7));
 				corsi.add(c);
 			}
