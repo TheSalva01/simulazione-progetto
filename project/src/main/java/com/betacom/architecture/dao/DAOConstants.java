@@ -9,7 +9,7 @@ public interface DAOConstants {
 	
 	String SELECT_CORSISTA_SEQ = "select corsista_seq.nextval from dual";
 	
-	String SELECT_CODADMIN = "Select cod_admin from amministratori where nome_admin = ?";
+	String SELECT_CODADMIN = "Select cod_admin from amministratore where nome_admin = ?";
 
 	String SELECT_CORSISTI = "select * from corsista";
 	
