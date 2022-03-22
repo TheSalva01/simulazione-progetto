@@ -15,7 +15,9 @@
 		  		<h3 class="card-header text-danger">ERRORE</h3>
 		  		<div class="card-body text-danger">
 		    		<h5>Hai effettuato 5 tentativi errati</h5>
-		    		<a href="/" class="card-text text-danger">Effettua il login</a>
+		    		<h6>Assicurati che le credenziali inserite siano corrette</h6>
+		    		<p></p>
+		    		<a href="./home.jsp" class="card-text text-danger">Effettua il login</a>
 		  		</div>
 			</div>
 		</div>

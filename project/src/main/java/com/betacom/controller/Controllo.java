@@ -32,19 +32,24 @@ public class Controllo extends HttpServlet {
 			try {
 				LoginUtility lU = new LoginUtility();
 				admincode = lU.getCodAdmin(username);
-
+				if (i == 5) {
+					response.sendRedirect("accessonegato.jsp");
+					return;
+				}
 				if (admincode != null) {
 					if (admincode.equals(password)) {
 						session.setAttribute("admin", username);
 						response.sendRedirect("elencocorsi.jsp");
 					} else if (!admincode.equals(password) && i < 5) {
 						session.setAttribute("contatore", i + 1);
-					} else if (!admincode.equals(password) && i == 5) {
-						session.setAttribute("contatore", 0);
-						response.sendRedirect("accessonegato.jsp");
+						System.out.println(i);
+						response.sendRedirect("home.jsp");
+					} else if (!admincode.equals(password)) {
+						session.setAttribute("contatore", i + 1);
+						response.sendRedirect("home.jsp");
 					}
 				} else if (admincode == null) {
-					session.setAttribute("contatore", 0);
+					session.setAttribute("contatore", i + 1);
 					response.sendRedirect("home.jsp");
 				}
 			} catch (DAOException | ClassNotFoundException exc) {
