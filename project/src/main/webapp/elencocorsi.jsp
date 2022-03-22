@@ -2,7 +2,7 @@
 <%@page import="com.betacom.businesscomponent.model.Corso"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" errorPage="/errore.jsp"%>
 <%@page import="com.betacom.businesscomponent.facade.AdminFacade"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +15,11 @@
 </head>
 <body>
 <jsp:include page="navBar.jsp"/>
+<%
+	String username = (String) session.getAttribute("username");
+	if(username != null) {
+%> 	
+
 <div class="container-fluid">
 
 <%
@@ -43,6 +48,14 @@ if(session.getAttribute("bottone") != null && session.getAttribute("bottone").eq
         	al prezzo di <%= c.getCostoCorso() %>&euro;
         </p>
         <form action="/<%= application.getServletContextName()%>/inseriscicorsista" method="post">
+        <input type="hidden" name="codCorso" value="<%= c.getCodCorso() %>">
+        <input type="hidden" name="nomeCorso" value="<%= c.getNomeCorso() %>">
+        <input type="hidden" name="dataInizio" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(c.getDataInizioCorso())%>">
+        <input type="hidden" name="dataFine" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(c.getDataFineCorso()) %>">
+        <input type="hidden" name="costoCorso" value="<%= c.getCostoCorso()%>">
+        <input type="hidden" name="commenti" value="<%= c.getCommentiCorso()%>">
+        <input type="hidden" name="aula" value="<%= c.getAulaCorso()%>">
+        <input type="hidden" name="docente" value="<%= c.getDocente()%>">
 			<button type="submit" class="btn btn-primary">Inserisci corsista</button>
 		</form>
       </div>
@@ -78,7 +91,15 @@ if(session.getAttribute("bottone") != null && session.getAttribute("bottone").eq
         	in aula <%= c.getAulaCorso() %><br>
         	al prezzo di <%= c.getCostoCorso() %>&euro;
         </p>
-        <form action="/<%= application.getServletContextName()%>/elimina" method="post">
+        <form action="/<%= application.getServletContextName()%>/eliminacorso" method="post">
+        <input type="hidden" name="codCorso" value="<%= c.getCodCorso() %>">
+        <input type="hidden" name="nomeCorso" value="<%= c.getNomeCorso() %>">
+        <input type="hidden" name="dataInizio" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(c.getDataInizioCorso())%>">
+        <input type="hidden" name="dataFine" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(c.getDataFineCorso()) %>">
+        <input type="hidden" name="costoCorso" value="<%= c.getCostoCorso()%>">
+        <input type="hidden" name="commenti" value="<%= c.getCommentiCorso()%>">
+        <input type="hidden" name="aula" value="<%= c.getAulaCorso()%>">
+        <input type="hidden" name="docente" value="<%= c.getDocente()%>">
 			<button type="submit" class="btn btn-danger">Elimina corso</button>
 		</form>
       </div>
@@ -94,6 +115,15 @@ if(session.getAttribute("bottone") != null && session.getAttribute("bottone").eq
 }
 %>
 
+<hr>
+<a href="home.jsp">Torna alla home</a>
+
 </div>
 </body>
 </html>
+
+<%
+} else {
+	response.sendRedirect("errore.jsp");
+}
+%>
