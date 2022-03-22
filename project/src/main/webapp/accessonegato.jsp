@@ -1,12 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" errorPage="error.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Accesso Negato</title>
+	<%@include file="CDN.html" %>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/style.css">
+	<meta charset="ISO-8859-1">
+	<title>Accesso negato</title>
 </head>
-<body>
-<!-- pagina dopo 5 tentativi errati di accesso -->
-</body>
+	<body>
+		<jsp:include page="navBar.jsp"/>
+		<div class="container text-center mt-5 mx-auto">
+			<div class="card border-danger mb-3 mx-auto" style="width: 60vw;">
+		  		<h3 class="card-header text-danger">ERRORE</h3>
+		  		<div class="card-body text-danger">
+		    		<h5>Hai effettuato 5 tentativi errati</h5>
+		    		<a href="/" class="card-text text-danger">Effettua il login</a>
+		  		</div>
+			</div>
+		</div>
+	</body>
 </html>

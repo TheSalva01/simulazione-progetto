@@ -18,18 +18,19 @@
 <div class="container-fluid">
 
 <%
-if(request.getParameter("bottone") != null && request.getParameter("bottone").equals("inserisci")) {
+if(session.getAttribute("bottone") != null && session.getAttribute("bottone").equals("inserisci")) {
 %>
 <div class="page-header">
-	<h2 class="py-3 col-md-offset-1">CORSI DISPONIBILI</h2>
-		<h4 class="my-3 col-md-offset-1">Scegliere il corso per l'iscrizione del corsista</h4>
+	<h2 class="py-3 col-md-offset-1 text-center">CORSI DISPONIBILI</h2>
+	<h4 class="my-3 col-md-offset-1 text-center">Scegliere il corso per l'iscrizione del corsista</h4>
 </div>
+
+<div class="row row-cols-1 row-cols-md-3">
 <%
 	List<Corso> corsi = AdminFacade.getInstance().getCorsi();
 	for(Corso c: corsi){
 		if(AdminFacade.getInstance().getSlotsAvailable(c) > 0) {
 %>
-<div class="row row-cols-1 row-cols-md-3">
   <div class="col mb-4">
     <div class="card">
       <img src="img/corsionline.jpg" class="card-img-top" alt="corso">
@@ -47,24 +48,25 @@ if(request.getParameter("bottone") != null && request.getParameter("bottone").eq
       </div>
     </div>
   </div>
-  </div>
 <%
 		}
 	}
-} else {
+%>
+  </div>
+<%
+} else if(session.getAttribute("bottone") != null && session.getAttribute("bottone").equals("elimina")){
 %>
   
 <div class="page-header">
-	<h2 class="py-3 col-md-offset-1">I MIEI CORSI</h2>
-		<h4 class="my-3 col-md-offset-1">Scegliere il corso da eliminare</h4>
+	<h2 class="py-3 col-md-offset-1 text-center">I MIEI CORSI</h2>
+		<h4 class="my-3 col-md-offset-1 text-center">Scegliere il corso da eliminare</h4>
 </div>
 
-<div class="container">
+<div class="row row-cols-1 row-cols-md-3">
 <%
 	List<Corso> corsi = AdminFacade.getInstance().getCorsi();
 	for(Corso c: corsi){
 %>
-<div class="row row-cols-1 row-cols-md-3">
   <div class="col mb-4">
     <div class="card">
       <img src="img/corsionline.jpg" class="card-img-top" alt="corso">
@@ -76,19 +78,19 @@ if(request.getParameter("bottone") != null && request.getParameter("bottone").eq
         	in aula <%= c.getAulaCorso() %><br>
         	al prezzo di <%= c.getCostoCorso() %>&euro;
         </p>
-        <form action="/<%= application.getServletContextName()%>/eliminacorso" method="post">
-			<button type="submit" class="btn btn-danger">eliminacorso</button>
+        <form action="/<%= application.getServletContextName()%>/elimina" method="post">
+			<button type="submit" class="btn btn-danger">Elimina corso</button>
 		</form>
       </div>
     </div>
   </div>
-  </div>
-
-<%
+ <%
 	}
 %>
-	</div>
+  </div>
 <%
+} else {
+	response.sendRedirect("errore.jsp");
 }
 %>
 

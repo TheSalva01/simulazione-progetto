@@ -15,15 +15,21 @@
 		<jsp:include page="navBar.jsp"/>
 		<%
 			String username = (String) session.getAttribute("username");
-			if(username != null) {
+			if(username == null) {
 		%> 	
 		<main>
 			<div class="container-fluid m-0 p-0">
 				<h2 class="mx-4 my-3 float-left">CORSISTI</h2>
-				<div class="float-right m-3">
+				<div class="float-right m-3 d-flex">
+					<form action="/<%= application.getServletContextName()%>/inserisci" method="post">
 					<button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Nuovo Corsista</button>
+					</form>
+					<form action="/<%= application.getServletContextName()%>/*" class="px-1" method="get">
 					<button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Statistiche</button>
+					</form>
+					<form action="/<%= application.getServletContextName()%>/elimina" method="post">
 					<button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Elimina Corsi</button>
+					</form>
 				</div>
 				<table class="table table-striped table-hover">
 					<thead class="thead-dark">
