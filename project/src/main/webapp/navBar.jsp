@@ -17,7 +17,9 @@
 					<form action="/<%=application.getServletContextName()%>/controllo" method="post" class="form-horizontal">
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a class="dropdown-item"> 
-								<input type="text" name="nome_admin" placeholder="Username..." class="form-control" required></a> <a class="dropdown-item" href="#">
+								<input type="text" name="nome_admin" placeholder="Username..." class="form-control" required>
+							</a> 
+							<a class="dropdown-item" href="#">
 								<input type="password" name="cod_admin" placeholder="Password..." class="form-control" required>
 							</a> 
 							<a class="dropdown-item"><button type="submit" class="btn btn-dark">Login</button></a>
