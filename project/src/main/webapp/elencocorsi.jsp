@@ -18,7 +18,7 @@
 <div class="container-fluid">
 
 <%
-if(request.getParameter("bottone") != null && request.getParameter("bottone").equals("inserisci")) {
+if(session.getAttribute("bottone") != null && session.getAttribute("bottone").equals("inserisci")) {
 %>
 <div class="page-header">
 	<h2 class="py-3 col-md-offset-1 text-center">CORSI DISPONIBILI</h2>
@@ -48,19 +48,19 @@ if(request.getParameter("bottone") != null && request.getParameter("bottone").eq
       </div>
     </div>
   </div>
-  </div>
 <%
 		}
 	}
-} else {
+%>
+  </div>
+<%
+} else if(session.getAttribute("bottone") != null && session.getAttribute("bottone").equals("elimina")){
 %>
   
 <div class="page-header">
 	<h2 class="py-3 col-md-offset-1 text-center">I MIEI CORSI</h2>
 		<h4 class="my-3 col-md-offset-1 text-center">Scegliere il corso da eliminare</h4>
 </div>
-
-<div class="container">
 
 <div class="row row-cols-1 row-cols-md-3">
 <%
@@ -78,8 +78,8 @@ if(request.getParameter("bottone") != null && request.getParameter("bottone").eq
         	in aula <%= c.getAulaCorso() %><br>
         	al prezzo di <%= c.getCostoCorso() %>&euro;
         </p>
-        <form action="/<%= application.getServletContextName()%>/eliminacorso" method="post">
-			<button type="submit" class="btn btn-danger">eliminacorso</button>
+        <form action="/<%= application.getServletContextName()%>/elimina" method="post">
+			<button type="submit" class="btn btn-danger">Elimina corso</button>
 		</form>
       </div>
     </div>
@@ -88,8 +88,9 @@ if(request.getParameter("bottone") != null && request.getParameter("bottone").eq
 	}
 %>
   </div>
-</div>
 <%
+} else {
+	response.sendRedirect("errore.jsp");
 }
 %>
 
