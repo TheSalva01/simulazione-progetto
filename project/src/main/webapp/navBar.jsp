@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand float-left" href="#"><i class="fa-brands fa-pagelines fa-2x px-1"></i>Pannello amministratore</a>
+	<a class="navbar-brand float-left" href="/home.jsp"><i class="fa-brands fa-pagelines fa-2x px-1"></i>Pannello amministratore</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>

@@ -12,6 +12,10 @@ errorPage="/errore.jsp" %>
 </head>
 <body>
 <jsp:include page="navBar.jsp"/>
+<%
+	String username = (String) session.getAttribute("username");
+	if(username != null) {
+%> 	
 <div class="container">
 <div class="page-header">
 	<h3 class="my-4">Inserire i dati per la registrazione Corsista</h3>
@@ -67,3 +71,9 @@ class="form-horizontal" id="userForm">
 </div>
 </body>
 </html>
+
+<%
+	} else {
+		
+	}
+%>

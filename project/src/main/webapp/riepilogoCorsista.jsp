@@ -13,6 +13,10 @@
 	<body>
 		<jsp:include page="navBar.jsp"/>
 			<%
+				String username = (String) session.getAttribute("username");
+				if(username != null) {
+			%> 	
+			<%
 				List<Corso> c = AdminFacade.getInstance().getCorsiByCorsista(129);
 				if(c != null && c.size() != 0) {
 					for(int i = 0; i < c.size(); i++) {
@@ -57,3 +61,10 @@
 		</main>
 	</body>
 </html>
+
+
+<%
+} else {
+	response.sendRedirect("errore.jsp");
+}
+%>

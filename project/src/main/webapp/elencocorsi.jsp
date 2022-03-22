@@ -15,6 +15,11 @@
 </head>
 <body>
 <jsp:include page="navBar.jsp"/>
+<%
+	String username = (String) session.getAttribute("username");
+	if(username != null) {
+%> 	
+
 <div class="container-fluid">
 
 <%
@@ -110,6 +115,15 @@ if(session.getAttribute("bottone") != null && session.getAttribute("bottone").eq
 }
 %>
 
+<hr>
+<a href="home.jsp">Torna alla home</a>
+
 </div>
 </body>
 </html>
+
+<%
+} else {
+	response.sendRedirect("errore.jsp");
+}
+%>

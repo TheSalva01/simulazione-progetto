@@ -16,6 +16,10 @@
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
+	<%
+		String username = (String) session.getAttribute("username");
+		if(username != null) {
+	%> 	
 	<h2 class="p-3">STATISTICHE</h2>
 
 	<div class="container-fluid d-flex">
@@ -139,3 +143,10 @@
 	</div>
 </body>
 </html>
+
+
+<%
+} else {
+	response.sendRedirect("errore.jsp");
+}
+%>
