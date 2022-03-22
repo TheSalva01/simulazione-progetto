@@ -9,8 +9,9 @@
 body {
     background-image: url("https://w3.adisupuglia.it/wp-content/uploads/2014/07/university-background-06.jpg");
   	background-repeat: no-repeat; 
-  	background-size: cover; 
+  	background-size: cover;
 }
+
 
 .css-button-sliding-to-left--grey {
   min-width: 130px;

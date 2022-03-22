@@ -12,8 +12,8 @@
 		      	<li class="nav-item">
 		        	<a class="nav-link" href="#"><i class="fa-solid fa-right-to-bracket px-1"></i>Login <span class="sr-only"></span></a>
 		      	</li>
-		      	<li class="nav-item">
-		        	<a class="nav-link" href="#">Sign-up</a>
+		      	<li class="nav-item px-2">
+		        	<a class="nav-link" href="#"><i class="fa-solid fa-user-pen px-1"></i>Sign-up</a>
 		      	</li>
 		    </ul>
 		   	<%

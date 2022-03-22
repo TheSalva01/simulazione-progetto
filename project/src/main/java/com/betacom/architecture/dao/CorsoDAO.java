@@ -95,6 +95,7 @@ public class CorsoDAO implements DAOConstants {
 				corso.setCostoCorso(rs.getDouble(5));
 				corso.setCommentiCorso(rs.getString(6));
 				corso.setAulaCorso(rs.getString(7));
+				corso.setDocente(rs.getInt(8));
 			}	
 		}catch (SQLException sql) {
 			throw new DAOException(sql);
@@ -120,6 +121,7 @@ public class CorsoDAO implements DAOConstants {
 				c.setCostoCorso(rs.getDouble(5));
 				c.setCommentiCorso(rs.getString(6));
 				c.setAulaCorso(rs.getString(7));
+				c.setDocente(rs.getInt(8));
 				corsi.add(c);
 			}
 			rs.close();
