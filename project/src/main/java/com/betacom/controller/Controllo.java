@@ -20,26 +20,32 @@ public class Controllo extends HttpServlet {
 			throws ServletException, IOException {
 		String username = request.getParameter("nome_admin");
 		String password = request.getParameter("cod_admin");
-		
+
 		HttpSession session = request.getSession();
-		int i = (int) session.getAttribute("contatore");
-		String adminpass;
+		int i = 0;
+		if (session.getAttribute("contatore") != null) {
+			i = (int) session.getAttribute("contatore");
+		}
+		String admincode;
 
 		if (username != null && password != null) {
 			try {
 				LoginUtility lU = new LoginUtility();
-				adminpass = lU.getCodAdmin(username);
+				admincode = lU.getCodAdmin(username);
 
-				if (adminpass != null) {
-					if (adminpass.equals(password)) {
+				if (admincode != null) {
+					if (admincode.equals(password)) {
 						session.setAttribute("admin", username);
-						response.sendRedirect("home.jsp");
-					} else if (!adminpass.equals(password) && i < 5) {
-						session.setAttribute("contatore", i+1);
-					} else if (!adminpass.equals(password) && i == 5) {
+						response.sendRedirect("elencocorsi.jsp");
+					} else if (!admincode.equals(password) && i < 5) {
+						session.setAttribute("contatore", i + 1);
+					} else if (!admincode.equals(password) && i == 5) {
 						session.setAttribute("contatore", 0);
 						response.sendRedirect("accessonegato.jsp");
 					}
+				} else if (admincode == null) {
+					session.setAttribute("contatore", 0);
+					response.sendRedirect("home.jsp");
 				}
 			} catch (DAOException | ClassNotFoundException exc) {
 				exc.printStackTrace();
