@@ -39,10 +39,9 @@ public class Controllo extends HttpServlet {
 				if (admincode != null) {
 					if (admincode.equals(password)) {
 						session.setAttribute("admin", username);
-						response.sendRedirect("elencocorsi.jsp");
-					} else if (!admincode.equals(password) && i < 5) {
+						response.sendRedirect("home.jsp");
+					} else if (!admincode.equals(password)) {
 						session.setAttribute("contatore", i + 1);
-						System.out.println(i);
 						response.sendRedirect("home.jsp");
 					} else if (!admincode.equals(password)) {
 						session.setAttribute("contatore", i + 1);
