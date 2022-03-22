@@ -43,6 +43,14 @@ if(session.getAttribute("bottone") != null && session.getAttribute("bottone").eq
         	al prezzo di <%= c.getCostoCorso() %>&euro;
         </p>
         <form action="/<%= application.getServletContextName()%>/inseriscicorsista" method="post">
+        <input type="hidden" name="codCorso" value="<%= c.getCodCorso() %>">
+        <input type="hidden" name="nomeCorso" value="<%= c.getNomeCorso() %>">
+        <input type="hidden" name="dataInizio" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(c.getDataInizioCorso())%>">
+        <input type="hidden" name="dataFine" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(c.getDataFineCorso()) %>">
+        <input type="hidden" name="costoCorso" value="<%= c.getCostoCorso()%>">
+        <input type="hidden" name="commenti" value="<%= c.getCommentiCorso()%>">
+        <input type="hidden" name="aula" value="<%= c.getAulaCorso()%>">
+        <input type="hidden" name="docente" value="<%= c.getDocente()%>">
 			<button type="submit" class="btn btn-primary">Inserisci corsista</button>
 		</form>
       </div>
@@ -78,7 +86,15 @@ if(session.getAttribute("bottone") != null && session.getAttribute("bottone").eq
         	in aula <%= c.getAulaCorso() %><br>
         	al prezzo di <%= c.getCostoCorso() %>&euro;
         </p>
-        <form action="/<%= application.getServletContextName()%>/elimina" method="post">
+        <form action="/<%= application.getServletContextName()%>/eliminacorso" method="post">
+        <input type="hidden" name="codCorso" value="<%= c.getCodCorso() %>">
+        <input type="hidden" name="nomeCorso" value="<%= c.getNomeCorso() %>">
+        <input type="hidden" name="dataInizio" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(c.getDataInizioCorso())%>">
+        <input type="hidden" name="dataFine" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(c.getDataFineCorso()) %>">
+        <input type="hidden" name="costoCorso" value="<%= c.getCostoCorso()%>">
+        <input type="hidden" name="commenti" value="<%= c.getCommentiCorso()%>">
+        <input type="hidden" name="aula" value="<%= c.getAulaCorso()%>">
+        <input type="hidden" name="docente" value="<%= c.getDocente()%>">
 			<button type="submit" class="btn btn-danger">Elimina corso</button>
 		</form>
       </div>
