@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.betacom.businesscomponent.model.Corso"%>
 <%@page import="com.betacom.businesscomponent.facade.AdminFacade"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" errorPage="/errore.jsp"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,6 +12,10 @@
 	</head>
 	<body>
 		<jsp:include page="navBar.jsp"/>
+			<%
+				String username = (String) session.getAttribute("username");
+				if(username != null) {
+			%> 	
 			<%
 				List<Corso> c = AdminFacade.getInstance().getCorsiByCorsista(129);
 				if(c != null && c.size() != 0) {
@@ -57,3 +61,10 @@
 		</main>
 	</body>
 </html>
+
+
+<%
+} else {
+	response.sendRedirect("errore.jsp");
+}
+%>

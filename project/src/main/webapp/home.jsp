@@ -1,4 +1,3 @@
-
 <%@page import="java.util.List"%>
 <%@page import="com.betacom.businesscomponent.facade.AdminFacade"%>
 <%@page import="com.betacom.businesscomponent.model.Corsista"%>
@@ -24,7 +23,7 @@
 					<form action="/<%= application.getServletContextName()%>/inserisci" method="post">
 					<button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Nuovo Corsista</button>
 					</form>
-					<form action="/<%= application.getServletContextName()%>/*" class="px-1" method="get">
+					<form action="/<%= application.getServletContextName()%>/visualizza.jsp" class="px-1" method="get">
 					<button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Statistiche</button>
 					</form>
 					<form action="/<%= application.getServletContextName()%>/elimina" method="post">
@@ -77,3 +76,4 @@
 		</main>
 	</body>
 </html>
+l>
