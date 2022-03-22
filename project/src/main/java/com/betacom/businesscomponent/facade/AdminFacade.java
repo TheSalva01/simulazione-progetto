@@ -1,9 +1,11 @@
 package com.betacom.businesscomponent.facade;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.betacom.architecture.dao.CorsoDAO;
 import com.betacom.architecture.dao.DAOException;
 import com.betacom.businesscomponent.CorsistaBC;
 import com.betacom.businesscomponent.CorsoBC;
@@ -63,6 +65,11 @@ public class AdminFacade {
 		return corsoBC.getLastDate();
 	}
 
+	public List<Corso> getCorsiByCorsista(long idCorsista) throws DAOException, ClassNotFoundException, IOException {
+		CorsoCorsistaBC corsoCorsistaBC = new CorsoCorsistaBC(); 
+		return corsoCorsistaBC.getCorsiByCorsista(idCorsista);
+	}
+	
 	public int getMidLength() throws ClassNotFoundException, IOException, DAOException {
 		CorsoBC corsoBC = new CorsoBC(); 
 		return corsoBC.getMidLenght();
