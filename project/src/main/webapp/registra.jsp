@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
-errorPage="errore.jsp" %>
+errorPage="/errore.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +12,16 @@ errorPage="errore.jsp" %>
 </head>
 <body>
 <jsp:include page="navBar.jsp"/>
+<%
+	String username = (String) session.getAttribute("username");
+	if(username != null) {
+%> 	
 <div class="container">
 <div class="page-header">
 	<h3 class="my-4">Inserire i dati per la registrazione Corsista</h3>
 </div> 
 
-<form action="/<%= application.getServletContextName()%>/registra" method="get"
+<form action="/<%= application.getServletContextName()%>/registra" method="post"
 class="form-horizontal" id="userForm">
 
 <!-- ----------------------------------------NOME -->
@@ -50,7 +54,8 @@ class="form-horizontal" id="userForm">
 
 <div class="form-group">
     <div class="form-check">
-      <input style="width:20px; height:20px;" class="form-check-input" type="checkbox" value="" id="formPrec">
+      <input style="width:20px; height:20px;" class="form-check-input" type="checkbox"
+      name="formPrec" id="formPrec">
       <label class="form-check-label font-weight-bold mx-2" for="formPrec">
         Precedenti formativi
       </label>
@@ -59,12 +64,16 @@ class="form-horizontal" id="userForm">
 
 <div class="row">
 	<div class="col-md-4 col-md-offset-1">
-		<button type="submit" class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">
-			Registra
-		</button>
+		<button type="submit" class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Registra</button>
 	</div>
 </div>
 </form>
 </div>
 </body>
 </html>
+
+<%
+	} else {
+		
+	}
+%>
