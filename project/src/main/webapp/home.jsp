@@ -15,7 +15,7 @@
 		<jsp:include page="navBar.jsp"/>
 		<%
 			String username = (String) session.getAttribute("username");
-			if(username == null) {
+			if(username != null) {
 		%> 	
 		<main>
 			<div class="container-fluid m-0 p-0">
