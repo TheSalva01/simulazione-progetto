@@ -8,9 +8,9 @@
 <link rel="stylesheet" href="css/home.css">
 <title>Errore</title>
 </head>
-<body class="v-100">
+<body class="vh-100">
 	<jsp:include page="navBar.jsp"/>
-	<div class="container-fluid center">
+	<div class="container-fluid text-center mx-auto">
 		<div class="page-header" style="color: #ed616f;">
 			<h2>Si è verificato un errore interno</h2>
 		</div>
