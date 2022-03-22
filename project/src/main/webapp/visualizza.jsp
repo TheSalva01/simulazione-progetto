@@ -16,6 +16,10 @@
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
+	<%
+		String username = (String) session.getAttribute("username");
+		if(username != null) {
+	%> 	
 	<h2 class="p-3">STATISTICHE</h2>
 
 	<div class="container-fluid d-flex">
@@ -31,7 +35,7 @@
 			style="max-width: 16rem;">
 			<div class="card-body">
 				<h5 class="card-title">Corso più frequentato</h5>
-				<h1 class="card-text"><%=AdminFacade.getInstance().getTrendCourse().getNomeCorso()%></h1>
+				<h1 class="card-text"><%=AdminFacade.getInstance().getTrendCourse() == null ? "Nessuno" : AdminFacade.getInstance().getTrendCourse().getNomeCorso()%></h1>
 			</div>
 		</div>
 
@@ -139,3 +143,10 @@
 	</div>
 </body>
 </html>
+
+
+<%
+} else {
+	response.sendRedirect("errore.jsp");
+}
+%>
