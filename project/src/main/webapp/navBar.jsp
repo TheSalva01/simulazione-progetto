@@ -33,8 +33,8 @@
 		} else {
 		%>
 		<ul class="navbar-nav ml-auto" style="max-height: 100px;">
-			<li class="nav-item"><a class="nav-link text-light" href="#"><%=user%></a></li>
-			<li class="nav-item px-2"><a class="nav-link text-light" href="logout.jsp">Logout</a></li>
+			<li class="nav-item"><a class="nav-link text-light" href="#"><i class="fa-solid fa-user px-1"></i><%=user%></a></li>
+			<li class="nav-item"><a class="nav-link text-light" href="logout.jsp"><i class="fa-solid fa-arrow-up-right-from-square px-1"></i>Logout</a></li>
 		</ul>
 	</div>
 	<%
