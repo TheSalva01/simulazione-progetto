@@ -17,7 +17,7 @@
 				if(username != null) {
 			%> 	
 			<%
-				List<Corso> c = AdminFacade.getInstance().getCorsiByCorsista(129);
+				List<Corso> c = AdminFacade.getInstance().getCorsiByCorsista(Long.parseLong((String)session.getAttribute("codCorso")));
 				if(c != null && c.size() != 0) {
 					for(int i = 0; i < c.size(); i++) {
 			%>
