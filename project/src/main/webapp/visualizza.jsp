@@ -44,9 +44,9 @@
 			<div class="card-body">
 				<h5 class="card-title">Inizio ultimo corso</h5>
 				<%
-				Date date = AdminFacade.getInstance().getLastDate();
-
-				String data = new SimpleDateFormat("dd/MM/yyyy").format(date);
+					Date date = AdminFacade.getInstance().getLastDate();
+	
+					String data = new SimpleDateFormat("dd/MM/yyyy").format(date);
 				%>
 				<h1 class="card-text"><%=data%></h1>
 			</div>
@@ -77,31 +77,34 @@
 		<table class="table table-striped table-hover">
 			<thead class="thead-dark">
 				<tr class="font-weight-bold text-center">
-					<th class="col-3" scope="col"><h5 class="m-0">ID</h5></th>
+					<th class="col-1" scope="col"><h5 class="m-0">ID</h5></th>
 					<th class="col-3" scope="col"><h5 class="m-0">Nome</h5></th>
 					<th class="col-3" scope="col"><h5 class="m-0">Cognome</h5></th>
-					<th class="col-3" scope="col"><h5 class="m-0">Prec. Form.</h5></th>
+					<th class="col-2" scope="col"><h5 class="m-0">Prec. Form.</h5></th>
+					<th class="col-3" scope="col"><h5 class="m-0">#</h5></th>
 				</tr>
 			</thead>
 			<%
 			List<Corsista> c = AdminFacade.getInstance().getCorsisti();
 			for (int i = 0; i < c.size(); i++) {
 			%>
+			 
 			<tbody>
 				<tr class="font-weight-bold text-center">
-					<th class="col-3" scope="row"><%=c.get(i).getCodCorsista()%></th>
+					<th class="col-1" scope="row"><%=c.get(i).getCodCorsista()%></th>
 					<td class="col-3"><%=c.get(i).getNomeCorsista()%></td>
 					<td class="col-3"><%=c.get(i).getCognomeCorsista()%></td>
-					<td class="col-3"><input style="width: 20px; height: 20px;"
+					<td class="col-2"><input style="width: 20px; height: 20px;"
 						disabled type="checkbox" name="precForm"
 						<%if (c.get(i).getPrecForm() == 1) {
 							out.print("checked");
 						}%> />
 					</td>
+					<td class="col-3"><a class="nav-link text-light" href="riepilogoCorsista.jsp"><button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Dettagli</button></a></td>
 				</tr>
 			</tbody>
 			<%
-			}
+				}
 			%>
 		</table>
 	</div>
