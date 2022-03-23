@@ -100,7 +100,12 @@
 							out.print("checked");
 						}%> />
 					</td>
-					<td class="col-3"><a class="nav-link text-light" href="riepilogoCorsista.jsp"><button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Dettagli</button></a></td>
+					<td class="col-3">
+						<form action="/<%= application.getServletContextName()%>/inserisci" method="post">
+							<a class="nav-link text-light" href="riepilogoCorsista.jsp"><button class="css-button css-button-sliding-to-left css-button-sliding-to-left--grey">Dettagli Corsi</button></a>		
+						</form>
+						
+					</td>
 				</tr>
 			</tbody>
 			<%
